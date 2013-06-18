@@ -17,18 +17,13 @@ function ProgramScreen:new()
 	function screen:initialize()
 
 		local programButton  = self:getButton("images/programs0.png",77,78)
-
 		self.programButton   = programButton
-
-
 
 	end
 	--------
 	function screen:show()
 
 		local programButton  = self.programButton
-
-
 		local w = 0
 		w = self:tweenButtons(programButton, w, w, -(programButton.height*.5), programButton.height*.5, 0, 1)
 
@@ -38,8 +33,6 @@ function ProgramScreen:new()
 	function screen:hide()
 
 		local programButton  = self.programButton
-
-
 		local w = 0
 		w = self:tweenButtons(programButton, w, w, programButton.height*.5, -(programButton.height*.5), 1, 0)
 

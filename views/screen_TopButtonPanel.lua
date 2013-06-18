@@ -1,9 +1,10 @@
 -- MAIN SCREEN
 
-MainScreen = {}
+TopButtonPanel = {}
 
-function MainScreen:new()
+function TopButtonPanel:new()
 
+-- print("Component",gComponents.mainScreen, gCollector.textBlock.text)
 	local screen = display.newGroup()
 
 	------------------------------------------------------------------------------------------
@@ -121,6 +122,7 @@ function MainScreen:new()
 		if event.target == self.programButton then 
 			print("program button pressed")
 			if event.phase == "began" then
+				gCollector.textBlock.text = "1"
 				self.programButton:setFrame(2)
 			elseif event.phase == "ended" then 
 				self.programButton:setFrame(1) 
@@ -128,6 +130,7 @@ function MainScreen:new()
 		elseif event.target == self.planButton then 
 			print("plan button pressed")
 			if event.phase == "began" then
+				gCollector.textBlock.text =  "2"
 				self.planButton:setFrame(2)
 			elseif event.phase == "ended" then 
 				self.planButton:setFrame(1) 
@@ -135,6 +138,7 @@ function MainScreen:new()
 		elseif event.target == self.reportsButton then 
 			print("reports button pressed")
 			if event.phase == "began" then
+				gCollector.textBlock.text =  "3"
 				self.reportsButton:setFrame(2)
 			elseif event.phase == "ended" then 
 				self.reportsButton:setFrame(1) 
@@ -142,6 +146,7 @@ function MainScreen:new()
 		elseif event.target == self.settingsButton then 
 			print("settings button pressed")
 			if event.phase == "began" then
+				gCollector.textBlock.text = "4"
 				self.settingsButton:setFrame(2)
 			elseif event.phase == "ended" then 
 				self.settingsButton:setFrame(1) 
@@ -159,4 +164,4 @@ function MainScreen:new()
 
 end
 
-return MainScreen
+return TopButtonPanel

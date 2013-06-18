@@ -16,7 +16,13 @@ display.setStatusBar( display.HiddenStatusBar )
 --------------------------------------------------------------------------------------
 -- variable declaritions
 --------------------------------------------------------------------------------------
-local gCollector           = {} 
+gComponents       = {}
+gCollector  = {} 
+local screen      = display.newGroup()
+
+gComponents[#gComponents+1] = {mainScreen=nil}
+gComponents.mainScreen  = screen
+
 
 --------------------------------------------------------------------------------------
 -- functions
@@ -29,11 +35,21 @@ local gCollector           = {}
 --------------------------------------------------------------------------------------
 -- scene execution
 --------------------------------------------------------------------------------------
+	gCollector[#gCollector+1] = {background=nil}
+	gCollector.background     = display.newImageRect("images/background.png", 640, 1136)
+	screen:insert(gCollector.background)
 
-  	gCollector[#gCollector+1] = {background=nil}
-	gCollector.background = display.newImageRect("images/background.png", 640, 1136)
+	gCollector[#gCollector+1] = {textBlock=nil}
+	gCollector.textBlock = display.newText(screen, "1", 100, 100, "Helvetica", 40)
+	screen:insert(gCollector.textBlock)
 
-
+local function loadTopButtonPanel()
+	require "views.screen_TopButtonPanel"
+	gComponents[#gComponents+1] = {topButtonPanel=nil}
+	gComponents.topButtonPanel  = TopButtonPanel:new()
+	gComponents.topButtonPanel:show()
+end
+--------
 local function testMainScreen()
 	require "views.screen_MainScreen"
 	local mainScreen = MainScreen:new()
@@ -52,10 +68,15 @@ local function testMainScreen()
 end
 
 local function testProgramScreen()
-	require "views.screen_ProgramScreen"
+require "views.screen_ProgramScreen"
 	local programScreen = ProgramScreen:new()
 
 	programScreen:show()
+	Runtime:addEventListener("aboutScreenBackButtonTouched", function()
+		print("Dude, you pressed the back button")
+	end
+	)
+
 
 	-- local t = {}
 	-- function t:timer(event)
@@ -103,8 +124,13 @@ local function testSettingScreen()
 	-- timer.performWithDelay(2*1000,t)
 end
 
- testMainScreen()
---testProgramScreen()
--- testPlanScreen()
+loadTopButtonPanel()
+print(gComponents.topButtonPanel)
+
+ --testMainScreen()
+-- testProgramScreen()
+--testPlanScreen()
 -- testReportScreen()
 -- testReportScreen()
+
+return screen
