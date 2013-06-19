@@ -50,6 +50,13 @@ local function loadTopButtonPanel()
 	gComponents.topButtonPanel:show()
 end
 --------
+local function loadMainScreenDisplay()
+	require "views.screen_MainScreenDisplay"
+	gComponents[#gComponents+1] = {mainScreenDisplay=nil}
+	gComponents.mainScreenDisplay  = MainScreenDisplay:new()
+	gComponents.mainScreenDisplay:show()
+end
+--------
 local function testMainScreen()
 	require "views.screen_MainScreen"
 	local mainScreen = MainScreen:new()
@@ -124,9 +131,14 @@ local function testSettingScreen()
 	-- timer.performWithDelay(2*1000,t)
 end
 
+loadMainScreenDisplay()
 loadTopButtonPanel()
-print(gComponents.topButtonPanel)
 
+
+gComponents.mainScreenDisplay:addAlert("1", 1,"LATE","thename")
+gComponents.mainScreenDisplay:addAlert("2", 2,"NOW","thename")
+gComponents.mainScreenDisplay:addAlert("3", 1,"10:30 AM","thename")
+gComponents.mainScreenDisplay:addAlert("4", 2,"10:30 AM","thename")
  --testMainScreen()
 -- testProgramScreen()
 --testPlanScreen()

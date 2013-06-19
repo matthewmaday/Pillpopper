@@ -1,10 +1,9 @@
--- MAIN SCREEN
+-- Top Menu Panel
 
 TopButtonPanel = {}
 
 function TopButtonPanel:new()
 
--- print("Component",gComponents.mainScreen, gCollector.textBlock.text)
 	local screen = display.newGroup()
 
 	------------------------------------------------------------------------------------------
@@ -18,10 +17,10 @@ function TopButtonPanel:new()
 	function screen:initialize()
 
 		local options = {
-			width=80,                 -- width of one frame
-			height=77,                -- height of one frame
-			numFrames=8,              -- total number of frames in spritesheet
-		    sheetContentWidth = 320,  -- width of original 1x size of entire sheet
+			width              = 80,  -- width of one frame
+			height             = 76,  -- height of one frame
+			numFrames 		   = 8,   -- total number of frames in spritesheet
+		    sheetContentWidth  = 320, -- width of original 1x size of entire sheet
     		sheetContentHeight = 154  -- height of original 1x size of entire sheet
 		}
 
